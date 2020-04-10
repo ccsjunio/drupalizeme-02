@@ -754,6 +754,9 @@ $settings['entity_update_backup'] = TRUE;
 #
  if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
    include $app_root . '/' . $site_path . '/settings.local.php';
- }
+ } elseif (file_exists('/.dockerenv') && 
+    file_exists($app_root . '/' . $site_path . '/settings.local.php')){
+    include $app_root . '/' . $site_path . '/settings.docker.php';
+  }
 
 $settings['config_sync_directory'] = 'sites/default/files/config_lbpBCL3u-wHU2-klqwjNQFHLZN0rWVAwGvwDogbKl8Ysn2owMJ6p9HVqKxCLbCJONxY_nOqAwg/sync';
